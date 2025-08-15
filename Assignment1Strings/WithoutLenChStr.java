@@ -1,7 +1,13 @@
 package com.sgtesting.programs.Assignment1Strings;
 
+import java.security.PrivateKey;
+
 public class WithoutLenChStr {
     public static void main(String[] args) {
+        StringCharacterCount();
+    }
+    private static void StringCharacterCount()
+    {
         String s="Harshitha";
         int count=0;
         for(char kk:s.toCharArray())
