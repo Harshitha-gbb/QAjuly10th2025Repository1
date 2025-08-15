@@ -3,9 +3,8 @@ package com.sgtesting.programs.Assignment1Strings;
 public class WithoutLenChStr {
     public static void main(String[] args) {
         String s="Harshitha";
-        char[] ch=s.toCharArray();
         int count=0;
-        for(char kk:ch)
+        for(char kk:s.toCharArray())
         {
             count=count+1;
         }
