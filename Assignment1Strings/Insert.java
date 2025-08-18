@@ -4,6 +4,7 @@ public class Insert {
     public static void main(String[] args) {
         insertString();
         insertString1();
+        deleteString1();
     }
     private static void insertString()
     {
@@ -30,7 +31,13 @@ public class Insert {
     private static void insertString1()
     {
         String s="SUNDAYMONDAYTUESDAYWEDNESDAYTHURSDAYFRIDAYSATURDAY";
-        String str=s.replace("DAY","DAY,");
+        String str=s.replaceAll("DAY","DAY,");
+        System.out.println(str);
+    }
+    private static void deleteString1()
+    {
+        String s="SUNDAYMONDAYTUESDAYWEDNESDAYTHURSDAYFRIDAYSATURDAY";
+        String str=s.replaceAll("DAY","");
         System.out.println(str);
     }
 }
