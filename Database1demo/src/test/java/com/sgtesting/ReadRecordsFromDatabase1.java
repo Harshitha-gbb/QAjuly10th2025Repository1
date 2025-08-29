@@ -1,23 +1,22 @@
-package com.sgtesting.database;
+package com.sgtesting;
 
 import java.sql.*;
 
-public class ReadRecordsFromDatabaseDemo1 {
+public class ReadRecordsFromDatabase1 {
     public static void main(String[] args) {
-    //   readRecordsFromDatabaseTable();
-       insertDemo();
+    //    readRecordsFromDatabaseTable();
+        insertDemo();
     }
-
     private static void readRecordsFromDatabaseTable()
     {
         Connection conn=null;
         try
         {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
+            conn= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
             System.out.println("Connection has established successfully");
             Statement stmt=conn.createStatement();
-            String query="select * from dept";
+            String query="select * from scott.dept";
             ResultSet rs=stmt.executeQuery(query);
             ResultSetMetaData rsmeta =rs.getMetaData();
             String col1=rsmeta.getColumnName(1);
@@ -63,7 +62,7 @@ public class ReadRecordsFromDatabaseDemo1 {
             conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
             System.out.println("Connection has established successfully");
             Statement stmt=conn.createStatement();
-            String query="insert into dept values(50,'HEALTH','BANGALORE')";
+            String query="insert into scott.dept values(50,'HEALTH','BANGALORE')";
             stmt.executeUpdate(query);
 
         }catch (Exception e)

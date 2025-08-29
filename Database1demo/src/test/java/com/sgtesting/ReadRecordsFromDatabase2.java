@@ -1,24 +1,24 @@
-package com.sgtesting.database;
+package com.sgtesting;
 
 import java.sql.*;
 
-public class ReadRecordsFromDatabaseDemo1 {
+public class ReadRecordsFromDatabase2 {
     public static void main(String[] args) {
-    //   readRecordsFromDatabaseTable();
-       insertDemo();
+        readRecordsFromDatabaseTable();
+        insertDemo();
     }
-
     private static void readRecordsFromDatabaseTable()
     {
         Connection conn=null;
         try
         {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
+            conn= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
             System.out.println("Connection has established successfully");
-            Statement stmt=conn.createStatement();
-            String query="select * from dept";
-            ResultSet rs=stmt.executeQuery(query);
+
+            String query="select * from scott.dept";
+            PreparedStatement stmt=conn.prepareStatement(query);
+            ResultSet rs=stmt.executeQuery();
             ResultSetMetaData rsmeta =rs.getMetaData();
             String col1=rsmeta.getColumnName(1);
             System.out.printf("%-12s",col1);
@@ -62,9 +62,10 @@ public class ReadRecordsFromDatabaseDemo1 {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","tiger");
             System.out.println("Connection has established successfully");
-            Statement stmt=conn.createStatement();
-            String query="insert into dept values(50,'HEALTH','BANGALORE')";
-            stmt.executeUpdate(query);
+
+            String query="insert into scott.dept values(60,'BANKING','MYSORE')";
+            PreparedStatement stmt=conn.prepareStatement(query);
+            stmt.executeUpdate();
 
         }catch (Exception e)
         {
